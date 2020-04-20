@@ -5,7 +5,7 @@
 * [CLIP1](https://youtu.be/ny0FBS_-dvw) : อธิบายคำสั่ง ADD
 
 #### อธิบายการบ้านครั้งที่ 1
-* คำสั่ง ADD เป็นคำสั่งประเภท R-Format โดยจะมีรู้แบบการเขียนดังนี้ 
+* คำสั่ง ADD เป็นคำสั่งประเภท R-Format โดยจะมีรูปแบบการเขียนดังนี้ 
   ```
   ADD $3, $1, $2 
   โดยที่ Rs = $1
@@ -64,7 +64,7 @@
     
   ##### Multi-Cycle
   ![image](http://drive.google.com/uc?export=view&id=1gw36aznG7a9HcBrN91cA51OqS0qHT313)
-    1. แต่ละคำสั่ง ใช้เวลาทำงานไม่เท่ากัน
+    1. แต่ละคำสั่ง ใช้เวลาทำงานไม่เท่ากัน และไม่สามารถจบได้ใน Cycle เดียว
     2. มี ALU 1 ตัว
     3. มี Memory 1 ตัว เก็บ Data กับ Instruction ไว้ใน Memory เดียวกัน
 
@@ -77,9 +77,9 @@
      แล้วนำค่า PC ไปบวกกับ 4 แล้วนำมาเก็บไว้ใน PC (PC = PC + 4)
   2. (T2) อ่านค่าจาก Register Rs และ Rt มาพักไว้ที่ A กับ B (A = Reg[IR[25-21]], B = Reg[IR[20-16]])
      จากนั้น นำค่า offset (IR[15-0])
-     มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
-     (ALUout = PC + (sign-extend(IR[15-0])<<2))
-  3. (T3) นำค่า A มาบวกกับ offset ที่ผ่านการ sign extend แล้วนำค่าที่คำนวณได้ไปเก็บไว้ที่ ALUOut
+     มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC หลังจากนั้น นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
+     (ALUout = PC + (signext(IR[15-0])<<2))
+  3. (T3) นำค่า A มาบวกกับ offset ที่ผ่านการ sign extend แล้วนำค่าที่คำนวณได้ไปเก็บไว้ที่ ALUOut (ALUOut = A + signext(IR[15-0]))
   4. (T4) นำค่าที่เก็บอยู่ใน ALUOut มาเก็บใน MDR (MDR = Memory[ALUout])
   5. (T5) นำค่าที่ได้ไปเก็บไว้ใน Register Rt (Reg[IR[20-16]] = MDR)
 
@@ -93,8 +93,8 @@
   2. (T2) อ่านค่าจาก Register Rs และ Rt มาพักไว้ที่ A กับ B (A = Reg[IR[25-21]], B = Reg[IR[20-16]])
      จากนั้น นำค่า offset (IR[15-0])
      มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
-     (ALUout = PC + (sign-extend(IR[15-0])<<2))
-  3. (T3) นำค่า A มาเปรียบเทียบกับ B ถ้าหาก A เท่ากับ B (A == B) จะทำการ jump ไปที่ address ใหม่ (PC = ALUOut)
+     (ALUout = PC + (signext(IR[15-0])<<2))
+  3. (T3) นำค่า A มาเปรียบเทียบกับ B โดยถ้าหาก A เท่ากับ B (A == B) จะทำการ jump ไปที่ address ใหม่ (PC = ALUOut)
 
 ### ส่งการบ้านครั้งที่ 6
 * [CLIP6](https://youtu.be/CDL71mYIqpk) : อธิบาย State Machine ของคำสั่ง R-Format
@@ -137,3 +137,16 @@
   MemtoReg = 0                (= ALUOut) ส่งค่า ALUOut
   RegDst = 1                  (= $rd) มาเก็บที่ Register Rd
   ```
+
+### ส่งการบ้านครั้งที่ 7
+* [CLIP7](https://youtu.be/B_lLvlft4Kg) : Pipelining
+
+#### อธิบายการบ้านครั้งที่ 7
+* Pipelining จะสามารถทำงานหลายคำสั่งพร้อมกันได้ต่างจาก Single Cycle และ Multi-Cycle ที่ต้องทำงานให้จบที่ละคำสั่ง
+  ##### ตัวอย่าง การทำงานของ Pipelining เปรียนเทียบกับ Single & Multiple Cycle
+  
+  ![image](http://drive.google.com/uc?export=view&id=1swZdQRgtWe_mqvAO8xVMxohDTeSfHDla)
+  
+  จากตัวอย่าง ใน Single และ Multiple Cycle จำเป็นต้องทำคำสั่งหนึ่งๆให้จบก่อน ถึงจะทำคำสั่งต่อๆไปได้
+  แต่การทำงานแบบ Pipelining หลังจากทำาน IFetch ของคำสั่ง Load เสร็จก็สามารถทำงานทั้ง Reg ที่เป็นขั้นตอนต่อไปของคำสั่ง Load 
+  และ IFetch ของคำสั่ง Store ที่เป็นคำสั่งต่อไปได้พร้อมๆกัน
