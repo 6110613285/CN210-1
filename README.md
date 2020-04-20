@@ -21,7 +21,7 @@
 #### อธิบายการบ้านครั้งที่ 2
 * คอมพิวเตอร์ จะทำการนำคำสั่งที่เขียนเป็นโค้ด ไปแปลงเป็นภาษาที่เครื่องเข้าใจ
 
-  #### ตัวอย่างโค้ดภาษา Java
+  ##### ตัวอย่างโค้ดภาษา Java
   
   ```
   class Test {
@@ -33,7 +33,7 @@
   }
   ```
   
-  #### คำสั่งที่คอมพิวเตอร์เข้าใจ
+  ##### คำสั่งที่คอมพิวเตอร์เข้าใจ
   
   ```
   00000000:			08400000		// j 01000000
@@ -56,13 +56,13 @@
 #### อธิบายการบ้านครั้งที่ 3
 * ความแตกต่างของ Single Cycle กับ Multi-Cycle มีดังนี้
 
-  #### Single Cycle
+  ##### Single Cycle
   ![image](http://drive.google.com/uc?export=view&id=1VMr1lnfyKohBFLkmBLg08NJvhMphnbMJ)
     1. 1 คำสั่งจบใน Cycle เดียว ไม่มีจะเป็นคำสั่งอะไรก็ตาม
     2. มี ALU 3 ตัว
     3. มี Memory 2 ตัว แยกเก็บ Data กับ Instruction
     
-  #### Multi-Cycle
+  ##### Multi-Cycle
   ![image](http://drive.google.com/uc?export=view&id=1gw36aznG7a9HcBrN91cA51OqS0qHT313)
     1. แต่ละคำสั่ง ใช้เวลาทำงานไม่เท่ากัน
     2. มี ALU 1 ตัว
