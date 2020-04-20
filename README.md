@@ -67,3 +67,18 @@
     1. แต่ละคำสั่ง ใช้เวลาทำงานไม่เท่ากัน
     2. มี ALU 1 ตัว
     3. มี Memory 1 ตัว เก็บ Data กับ Instruction ไว้ใน Memory เดียวกัน
+
+### ส่งการบ้านครั้งที่ 4
+* [CLIP4](https://youtu.be/JuLSpSP8_eA) : อธิบายคำสั่ง load word (LW)
+
+#### อธิบายการบ้านครั้งที่ 4
+* LW เป็นคำสั่ง I-Format โดยมีการทำงาน 5 ขั้นตอน (T1 - T5)
+  1. (T1) อ่านคำสั่งจาก Memory มาเก็บไว้ใน Instruction Register (R = Memory[PC])
+     แล้วนำค่า PC ไปบวกกับ 4 แล้วนำมาเก็บไว้ใน PC (PC = PC + 4)
+  2. (T2) อ่านค่าจาก Register Rs และ Rt มาพักไว้ที่ A กับ B (A = Reg[IR[25-21]], B = Reg[IR[20-16]])
+     จากนั้น นำค่า offset (IR[15-0])
+     มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
+     (ALUout = PC + (sign-extend(IR[15-0])<<2))
+  3. (T3) นำค่า A มาบวกกับ offset ที่ผ่านการ sign extend แล้วนำค่าที่คำนวณได้ไปเก็บไว้ที่ ALUOut
+  4. (T4) นำค่าที่เก็บอยู่ใน ALUOut มาเก็บใน MRD (MDR = Memory[ALUout])
+  5. (T5) นำค่าที่ได้ไปเก็บไว้ใน Register Rt (Reg[IR[20-16]] = MDR)
