@@ -69,7 +69,7 @@
     3. มี Memory 1 ตัว เก็บ Data กับ Instruction ไว้ใน Memory เดียวกัน
 
 ### ส่งการบ้านครั้งที่ 4
-* [CLIP4](https://youtu.be/JuLSpSP8_eA) : อธิบายคำสั่ง load word (LW)
+* [CLIP4](https://youtu.be/V6D0ssIwwcU) : อธิบายคำสั่ง load word (LW)
 
 #### อธิบายการบ้านครั้งที่ 4
 * LW เป็นคำสั่ง I-Format โดยมีการทำงาน 5 ขั้นตอน (T1 - T5)
@@ -80,5 +80,60 @@
      มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
      (ALUout = PC + (sign-extend(IR[15-0])<<2))
   3. (T3) นำค่า A มาบวกกับ offset ที่ผ่านการ sign extend แล้วนำค่าที่คำนวณได้ไปเก็บไว้ที่ ALUOut
-  4. (T4) นำค่าที่เก็บอยู่ใน ALUOut มาเก็บใน MRD (MDR = Memory[ALUout])
+  4. (T4) นำค่าที่เก็บอยู่ใน ALUOut มาเก็บใน MDR (MDR = Memory[ALUout])
   5. (T5) นำค่าที่ได้ไปเก็บไว้ใน Register Rt (Reg[IR[20-16]] = MDR)
+
+### ส่งการบ้านครั้งที่ 5
+* [CLIP5](https://youtu.be/tBfjp4cu408) : อธิบายคำสั่ง beq
+
+#### อธิบายการบ้านครั้งที่ 5
+* beq เป็นคำสั่ง I-Format โดยมีการทำงาน 3 ขั้นตอน (T1 - T3)
+  1. (T1) อ่านคำสั่งจาก Memory มาเก็บไว้ใน Instruction Register (R = Memory[PC])
+     แล้วนำค่า PC ไปบวกกับ 4 แล้วนำมาเก็บไว้ใน PC (PC = PC + 4)
+  2. (T2) อ่านค่าจาก Register Rs และ Rt มาพักไว้ที่ A กับ B (A = Reg[IR[25-21]], B = Reg[IR[20-16]])
+     จากนั้น นำค่า offset (IR[15-0])
+     มา sign extend เป็น 32 bits, shift left ไป 2 แล้วนำค่าที่ได้มาบวกกับ PC นำค่าที่คำนวณได้มาเก็บไว้ใน ALUOut
+     (ALUout = PC + (sign-extend(IR[15-0])<<2))
+  3. (T3) นำค่า A มาเปรียบเทียบกับ B ถ้าหาก A เท่ากับ B (A == B) จะทำการ jump ไปที่ address ใหม่ (PC = ALUOut)
+
+### ส่งการบ้านครั้งที่ 6
+* [CLIP6](https://youtu.be/CDL71mYIqpk) : อธิบาย State Machine ของคำสั่ง R-Format
+
+#### อธิบายการบ้านครั้งที่ 6
+* คำสั่ง R-Format ที่ยกตัวอย่าง มีการทำงาน 4 ขั้นตอน (T1 - T4)
+
+  ##### T1
+  
+  ```
+  MemRead = 1                 ส่งไปที่ Memory
+  lorD = 0                    (MemAddr <- PC) อ่านค่าจาก PC มาเก็บไว้ใน Memory
+  IRWrite = 1                 (IR <- Mem[PC]) อ่านน่าจาก Memory มาเก็บใน Instruction Register
+  ALUSrcA = 0                 (= PC) นำค่า PC ผ่าน MUX ไปที่ ALU เพื่อนำไปคำนวณต่อไป
+  ALUSrcB = 1                 (= 4) นำค่า 4 ผ่าน MUX ไปที่ ALU เพื่อนำไปคำนวณต่อไป
+  ALUOP = ADD                 (PC <- PC + 4) นำค่า PC มาบวก 4
+  PCWrite = 1, PCSource = 0   (นำค่าที่คำนวณได้ ส่งไปเก็บไว้ใน PC)
+  ```
+  
+  ##### T2
+  
+  ```
+  ALUSrcA = 0                 (= PC) นำค่า PC ผ่าน MUX ไปที่ ALU เพื่อนำไปคำนวณต่อไป
+  ALUSrcB = 3                 (= signext(IR<<2)) นำค่า offset มา sign extend, shift left 2 ผ่าน MUX ไปที่ ALU  
+  ALUOP = 0                   (= add) นำค่ามาบวกกันแล้วนำไปเก็บไว้ใน ALUOut
+  ```
+  
+  ##### T3
+  
+  ```
+  ALUSrcA = 1                 (= A = Reg[$rs]) นำค่าจาก Rs มาเก็บใน A จากนั้น นำค่า A ผ่าน MUX ไปที่ ALU 
+  ALUSrcB = 0                 (= A = Reg[$rt]) นำค่าจาก Rt มาเก็บใน B จากนั้น นำค่า A ผ่าน MUX ไปที่ ALU 
+  ALUOP = 2                   (= IR[28-26]) นำค่ามาบวกกันแล้วนำไปเก็บไว้ใน ALUOut
+  ```
+  
+  ##### T4
+  
+  ```
+  RegWrite = 1                (Reg[$rd] <- ALUOut) 
+  MemtoReg = 0                (= ALUOut) ส่งค่า ALUOut
+  RegDst = 1                  (= $rd) มาเก็บที่ Register Rd
+  ```
