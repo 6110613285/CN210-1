@@ -187,10 +187,10 @@
 
 #### อธิบายการบ้านครั้งที่ 7
 * Pipeline จะสามารถทำงานหลายคำสั่งพร้อมกันได้ต่างจาก Single Cycle และ Multi-Cycle ที่ต้องทำงานให้จบที่ละคำสั่ง
-  ##### ตัวอย่าง การทำงานของ Pipeline เปรียนเทียบกับ Single & Multiple Cycle
+  ##### ตัวอย่าง การทำงานของ Pipeline เปรียบเทียบกับ Single & Multiple Cycle
   
   ![image](http://drive.google.com/uc?export=view&id=1swZdQRgtWe_mqvAO8xVMxohDTeSfHDla)
   
   จากตัวอย่าง ใน Single และ Multiple Cycle จำเป็นต้องทำคำสั่งหนึ่งๆให้จบก่อน ถึงจะทำคำสั่งต่อๆไปได้
-  แต่การทำงานแบบ Pipeline หลังจากทำาน IFetch ของคำสั่ง Load เสร็จก็สามารถทำงานทั้ง Reg ที่เป็นขั้นตอนต่อไปของคำสั่ง Load 
+  แต่การทำงานแบบ Pipeline หลังจากทำงาน IFetch ของคำสั่ง Load เสร็จ ก็สามารถทำงานทั้ง Reg ที่เป็นขั้นตอนต่อไปของคำสั่ง Load 
   และ IFetch ของคำสั่ง Store ที่เป็นคำสั่งต่อไปได้พร้อมๆกัน
