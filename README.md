@@ -100,7 +100,7 @@
   
   ![image](http://drive.google.com/uc?export=view&id=1VMr1lnfyKohBFLkmBLg08NJvhMphnbMJ)
   
-    1. 1 คำสั่งจบใน Cycle เดียว ไม่มีจะเป็นคำสั่งอะไรก็ตาม
+    1. 1 คำสั่งจบใน Cycle เดียว ไม่ว่าจะเป็นคำสั่งอะไรก็ตาม
     2. มี ALU 3 ตัว
     3. มี Memory 2 ตัว แยกเก็บ Data กับ Instruction
     
@@ -183,14 +183,14 @@
   ```
 
 ### ส่งการบ้านครั้งที่ 7
-* [CLIP7](https://youtu.be/B_lLvlft4Kg) : Pipelining
+* [CLIP7](https://youtu.be/B_lLvlft4Kg) : Pipeline
 
 #### อธิบายการบ้านครั้งที่ 7
-* Pipelining จะสามารถทำงานหลายคำสั่งพร้อมกันได้ต่างจาก Single Cycle และ Multi-Cycle ที่ต้องทำงานให้จบที่ละคำสั่ง
-  ##### ตัวอย่าง การทำงานของ Pipelining เปรียนเทียบกับ Single & Multiple Cycle
+* Pipeline จะสามารถทำงานหลายคำสั่งพร้อมกันได้ต่างจาก Single Cycle และ Multi-Cycle ที่ต้องทำงานให้จบที่ละคำสั่ง
+  ##### ตัวอย่าง การทำงานของ Pipeline เปรียนเทียบกับ Single & Multiple Cycle
   
   ![image](http://drive.google.com/uc?export=view&id=1swZdQRgtWe_mqvAO8xVMxohDTeSfHDla)
   
   จากตัวอย่าง ใน Single และ Multiple Cycle จำเป็นต้องทำคำสั่งหนึ่งๆให้จบก่อน ถึงจะทำคำสั่งต่อๆไปได้
-  แต่การทำงานแบบ Pipelining หลังจากทำาน IFetch ของคำสั่ง Load เสร็จก็สามารถทำงานทั้ง Reg ที่เป็นขั้นตอนต่อไปของคำสั่ง Load 
+  แต่การทำงานแบบ Pipeline หลังจากทำาน IFetch ของคำสั่ง Load เสร็จก็สามารถทำงานทั้ง Reg ที่เป็นขั้นตอนต่อไปของคำสั่ง Load 
   และ IFetch ของคำสั่ง Store ที่เป็นคำสั่งต่อไปได้พร้อมๆกัน
