@@ -10,7 +10,7 @@
   3. Main Memory
   ```
   
-* ภายใน CPU ประกอบไปด้วย
+* ภายใน CPU ประกอบด้วย
 
   ```
   1. ALU (Arithmetic Logic Unit)
@@ -28,7 +28,7 @@
   
   ![image](http://drive.google.com/uc?export=view&id=1RKG_OyWCl5vUHJDnQWbdwhqpN-zbOlDG)
   
-  3. J-Format : เป็นคำสั่งที่ให้กระโดดไปทั้งงานที่ตำแหน่งหนึ่งๆ
+  3. J-Format : เป็นคำสั่งที่ให้กระโดดไปทำงานที่ตำแหน่งหนึ่งๆ
   
   ![image](http://drive.google.com/uc?export=view&id=1ZFX3zuWFomzyou7p-JJMWHfKyQWX-8jd)
   
@@ -38,8 +38,8 @@
 
 #### Single-Cycle, Multi-Cycle and Pipeline
 * Single Cycle : ทำทุกคำสั่งจบใน 1 Cycle และทุก Cycle ใช้เวลาเท่ากันหมด
-* Multi-Cycle : ทุกคำสั่งไม่สามารถจบใน Cycle เดียวได้ แต่ละคำสั่ง ใช่เวลาการทำงานไม่เท่ากัน
-* Pipeline : 1 คำสั่งมีหลาย Cycle แต่สามารถทำหลายๆคำสั่งพร้อมกันได้
+* Multi-Cycle : ทุกคำสั่งไม่สามารถจบใน Cycle เดียวได้ แต่ละคำสั่ง ใช้เวลาการทำงานไม่เท่ากัน
+* Pipeline : 1 คำสั่งมีหลาย Cycle และสามารถทำหลายๆคำสั่งพร้อมกันได้
 
 ### ส่งการบ้านครั้งที่ 1
 * [CLIP1](https://youtu.be/ny0FBS_-dvw) : อธิบายคำสั่ง ADD
@@ -76,18 +76,18 @@
   ##### คำสั่งที่คอมพิวเตอร์เข้าใจ
   
   ```
-  00000000:		08400000		// j 01000000
-  00000004:		1A000000		// data
+  00000000:	08400000	// j 01000000
+  00000004:	1A000000	// data
   …
-  01000000:		8C090004		// lw $9, $0(4)
-  01000004:		8D210000		// lw $1, $9(0)
-  01000008:		8D220004		// lw $2, $9(4)
-  0100000C:		00221820		// add $3, $1, $2
-  01000010:		AD230008		// sw $3, $9(8)
+  01000000:	8C090004	// lw $9, $0(4)
+  01000004:	8D210000	// lw $1, $9(0)
+  01000008:	8D220004	// lw $2, $9(4)
+  0100000C:	00221820	// add $3, $1, $2
+  01000010:	AD230008	// sw $3, $9(8)
   …
-  1A000000:		0000000A		// a = 10
-  1A000004:		00000014		// b = 20
-  1A000008:		0000001E		// c = a + b = 30
+  1A000000:	0000000A	// a = 10
+  1A000004:	00000014	// b = 20
+  1A000008:	0000001E	// c = a + b = 30
   ```
   
 ### ส่งการบ้านครั้งที่ 3
@@ -97,13 +97,17 @@
 * ความแตกต่างของ Single Cycle กับ Multi-Cycle มีดังนี้
 
   ##### Single Cycle
+  
   ![image](http://drive.google.com/uc?export=view&id=1VMr1lnfyKohBFLkmBLg08NJvhMphnbMJ)
+  
     1. 1 คำสั่งจบใน Cycle เดียว ไม่มีจะเป็นคำสั่งอะไรก็ตาม
     2. มี ALU 3 ตัว
     3. มี Memory 2 ตัว แยกเก็บ Data กับ Instruction
     
   ##### Multi-Cycle
+  
   ![image](http://drive.google.com/uc?export=view&id=1gw36aznG7a9HcBrN91cA51OqS0qHT313)
+  
     1. แต่ละคำสั่ง ใช้เวลาทำงานไม่เท่ากัน และไม่สามารถจบได้ใน Cycle เดียว
     2. มี ALU 1 ตัว
     3. มี Memory 1 ตัว เก็บ Data กับ Instruction ไว้ใน Memory เดียวกัน
