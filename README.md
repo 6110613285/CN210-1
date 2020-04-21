@@ -1,6 +1,28 @@
 # รายงานวิชา CN210
 ## สรุปเนื้อหาวิชา
 
+#### ส่วนประกอบคอมพิวเตอร์
+* คอมพิวเตอร์ ประกอบด้วย 1. CPU(Central Processing Unit) 2. I/O (Input, Output) 3. Main Memory
+#### MIPS Instruction Format
+* มีทั้งหมด 3 รูปแบบ
+  1. R-Format : เป็นคำสั่งประเภทคำนวณทางคณิตศาสตร์
+  ![image](http://drive.google.com/uc?export=view&id=16E1EZPLX0AB3rCJKctrxZLzTX8d4JAel)
+  
+  2. I-Format : เป็นคำสั่งที่จัดการเกี่ยวกับข้อมูล
+  ![image](http://drive.google.com/uc?export=view&id=1RKG_OyWCl5vUHJDnQWbdwhqpN-zbOlDG)
+  
+  3. J-Format : เป็นคำสั่งที่ให้กระโดดไปทั้งงานที่ตำแหน่งหนึ่งๆ
+  ![image](http://drive.google.com/uc?export=view&id=1ZFX3zuWFomzyou7p-JJMWHfKyQWX-8jd)
+  
+#### Von Neuman & Harvard Architectures
+* Von Neuman : เก็บทั้ง Data และ Instruction อยู่ใน Memory เดียวกัน
+* Harvard Architectures : เก็บ Data และ Instruction ไว้คนละ Memory
+
+#### Single-Cycle, Multi-Cycle and Pipeline
+* Single Cycle : ทำทุกคำสั่งจบใน 1 Cycle และทุก Cycle ใช้เวลาเท่ากันหมด
+* Multi-Cycle : ทุกคำสั่งไม่สามารถจบใน Cycle เดียวได้ แต่ละคำสั่ง ใช่เวลาการทำงานไม่เท่ากัน
+* Pipeline : 1 คำสั่งมีหลาย Cycle แต่สามารถทำหลายๆคำสั่งพร้อมกันได้
+
 ### ส่งการบ้านครั้งที่ 1
 * [CLIP1](https://youtu.be/ny0FBS_-dvw) : อธิบายคำสั่ง ADD
 
