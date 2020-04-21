@@ -3,6 +3,7 @@
 
 #### ส่วนประกอบคอมพิวเตอร์
 * คอมพิวเตอร์ ประกอบด้วย 1. CPU(Central Processing Unit) 2. I/O (Input, Output) 3. Main Memory
+
 #### MIPS Instruction Format
 * มีทั้งหมด 3 รูปแบบ
   1. R-Format : เป็นคำสั่งประเภทคำนวณทางคณิตศาสตร์
