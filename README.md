@@ -3,6 +3,7 @@
 
 #### ส่วนประกอบคอมพิวเตอร์
 * คอมพิวเตอร์ ประกอบด้วย 
+
   ```
   1. CPU (Central Processing Unit)
   2. I/O (Input, Output)
@@ -10,6 +11,7 @@
   ```
   
 * ภายใน CPU ประกอบไปด้วย
+
   ```
   1. ALU (Arithmetic Logic Unit)
   2. Register
