@@ -6,13 +6,13 @@
 #### MIPS Instruction Format
 * มีทั้งหมด 3 รูปแบบ
   1. R-Format : เป็นคำสั่งประเภทคำนวณทางคณิตศาสตร์
-  ![image](http://drive.google.com/uc?export=view&id=16E1EZPLX0AB3rCJKctrxZLzTX8d4JAel)
+  * ![image](http://drive.google.com/uc?export=view&id=16E1EZPLX0AB3rCJKctrxZLzTX8d4JAel)
   
   2. I-Format : เป็นคำสั่งที่จัดการเกี่ยวกับข้อมูล
-  ![image](http://drive.google.com/uc?export=view&id=1RKG_OyWCl5vUHJDnQWbdwhqpN-zbOlDG)
+  * ![image](http://drive.google.com/uc?export=view&id=1RKG_OyWCl5vUHJDnQWbdwhqpN-zbOlDG)
   
   3. J-Format : เป็นคำสั่งที่ให้กระโดดไปทั้งงานที่ตำแหน่งหนึ่งๆ
-  ![image](http://drive.google.com/uc?export=view&id=1ZFX3zuWFomzyou7p-JJMWHfKyQWX-8jd)
+  * ![image](http://drive.google.com/uc?export=view&id=1ZFX3zuWFomzyou7p-JJMWHfKyQWX-8jd)
   
 #### Von Neuman & Harvard Architectures
 * Von Neuman : เก็บทั้ง Data และ Instruction อยู่ใน Memory เดียวกัน
